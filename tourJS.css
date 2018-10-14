@@ -1,0 +1,58 @@
+.tourDirection{
+	opacity:.2;
+	cursor: pointer;
+	transition: .4s all;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+div:hover > .tourDirection{
+	opacity: .6;
+}
+div:hover > .tourDirection img{
+	filter: drop-shadow(0 0 5px #fff);
+}
+.tourDirection:hover{
+	opacity: .9 !important;
+}
+#tourLeft, #tourRight{
+	z-index: 2;
+	height:100%;
+	width:10%;
+	position: absolute;
+}
+#tourLeft img, #tourRight img{
+	max-width: 80%
+}
+#tourBackwards, #tourForwards{
+	z-index: 1;
+	width:100%;
+	height:25%;
+	position: absolute;
+}
+#tourBackwards img, #tourForwards img{
+	max-width: 6%;
+}
+#tourLeft{
+	left:0;
+	top:0;
+}
+#tourRight{
+	right:0;
+	top:0;
+}
+#tourRight img{
+	transform: scaleX(-1);
+}
+}
+#tourForwards{
+	left:0;
+	top:0;
+}
+#tourBackwards{
+	left:0;
+	bottom:0;
+}
+#tourBackwards img{
+	transform: scaleY(-1);
+}
