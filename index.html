@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>example tour</title>
+	<script type="text/javascript" src="./tour.js"></script>
+	<link rel="stylesheet" href="./tourJS.css">
+</head>
+<body>
 
+	<div id="testTourDiv" style="width:60%;margin-left:20%;"></div>
+
+	<script>
+		var tourJSON = {
+			"Entryway":{
+				image:"Entryway.jpg",
+				connections:{
+					forwards:"Behind Reception",
+					left:"Exam Rooms",
+					right:"Waiting Room"
+				}
+			},
+			"Entryway Reverse":{
+				image:"EntrywayReverse.jpg",
+				connections:{
+					right:"Exam Rooms",
+					left:"Waiting Room",
+					backwards:"Reception Reverse"
+				}
+			},
+			"Waiting Room":{
+				image:"WaitingRoom.jpg",
+				connections:{
+					left:"Entryway",
+					right:"Entryway Reverse"
+				}
+			},
+			"Exam Rooms":{
+				image:"ExamRooms.jpg",
+				connections:{
+					right:"Entryway",
+					left:"Entryway Reverse",
+					forwards:"Exam Room 1"
+				}
+			},
+			"Exam Room 1":{
+				image:"ExamRoom1.jpg",
+				connections:{
+					backwards:"Exam Rooms"
+				}
+			},
+			"Behind Reception":{
+				image:"BehindReception.jpg",
+				connections:{
+					right:"Reception",
+					left:"Hallway",
+					backwards:"Entryway"
+				}
+			},
+			"Reception":{
+				image:"Reception.jpg",
+				connections:{
+					right:"Reception Reverse",
+					left:"Behind Reception",
+				}
+			},
+			"Reception Reverse":{
+				image:"ReceptionReverse.jpg",
+				connections:{
+					left:"Reception",
+					right:"Hallway",
+					forwards:"Entryway Reverse"
+				}
+			},
+			"Hallway":{
+				image:"Hallway.jpg",
+				connections:{
+					forwards:"Surgery",
+					left:"Reception Reverse",
+					right:"Behind Reception"
+				}
+			},
+			"Hallway Reverse":{
+				image:"HallwayReverse.jpg",
+				connections:{
+					right:"Back Hallway",
+					left:"Back Room",
+					forwards:"Reception"
+				}
+			},
+			"Surgery":{
+				image:"Surgery.jpg",
+				connections:{
+					right:"Back Room",
+					left:"X-ray Room",
+					backwards:"Hallway"
+				}
+			},
+			"Back Room":{
+				image:"BackRoom.jpg",
+				connections:{
+					left:"Surgery",
+					right:"Hallway Reverse",
+					forwards:"Back Room Kennels",
+					backwards:"Back Hallway Reverse"
+				}
+			},
+			"Back Room Kennels":{
+				image:"BackRoomKennels.jpg",
+				connections:{
+					backwards:"Back Room",
+					right:"Back Room Right"
+				}
+			},
+			"Back Room Right":{
+				image:"BackRoomRight.jpg",
+				connections:{
+					left:"Back Room Kennels",
+					right:"Back Room Reverse",
+				}
+			},
+			"Back Room Reverse":{
+				image:"BackRoomReverse.jpg",
+				connections:{
+					left:"Back Room Right",
+					forwards:"Back Hallway"
+				}
+			},
+			"Back Hallway":{
+				image:"BackHallway.jpg",
+				connections:{
+					right:"X-ray Room",
+					left:"Hallway Reverse",
+					backwards:"Back Room Reverse",
+					forwards:"Back Hallway 2"
+				}
+			},
+			"Back Hallway Reverse":{
+				image:"BackHallwayReverse.jpg",
+				connections:{
+					left:"Surgery",
+					forwards:"Back Room"
+				}
+			},
+			"X-ray Room":{
+				image:"XrayRoom.jpg",
+				connections:{
+					right:"Surgery",
+					left:"Back Hallway"
+				}
+			},
+			"Back Hallway 2":{
+				image:"BackHallway2.jpg",
+				connections:{
+					right:"Back Kennel Room",
+					backwards:"Back Hallway"
+				}
+			},
+			"Back Hallway 2 Reverse":{
+				image:"BackHallway2Reverse.jpg",
+				connections:{
+					left:"Back Kennel Room",
+					forwards:"Back Hallway Reverse",
+					right:"Exam Room 1 Reverse"
+				}
+			},
+			"Back Kennel Room":{
+				image:"BackKennelRoom.jpg",
+				connections:{
+					backwards:"Exam Room 1",
+					right:"Back Hallway 2 Reverse",
+					left:"Back Hallway 2"
+				}
+			}
+		}
+		window.addEventListener("load",function(){
+			tour = new window.tour.tourMaster("#testTourDiv","./example/tourImg",tourJSON,0.5)
+		});
+	</script>
+
+</body>
+</html>
